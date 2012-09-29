@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+/*
+Zadanie 2. Zaimplementuj klasę Słownik<K,V> przechowującą pary elementów, gdzie
+pierwszym elementem pary jest klucz, a drugim wartość. Klasa powinna implementować
+metodę dodawania, wyszukiwania i usuwania elementu wskazywanego przez klucz.
+*/
+
+public class Slownik<K, V>
+{
+    List<K> keys=new List<K>();
+    List<V> values=new List<V>();
+    public void Add(K key, V value)
+    {
+        if (!keys.Contains(key))
+        {
+            keys.Add(key);
+            values.Add(value);
+        }
+    }
+    public V find(K key)
+    {
+        int i=keys.IndexOf(key);
+        if (i != -1)
+            return values[keys.IndexOf(key)];
+        else
+            return default(V);
+    }
+    public void Remove(K key)
+    {
+        int i = keys.IndexOf(key);
+        if (i != -1)
+        {
+            keys.RemoveAt(i);
+            values.RemoveAt(i);
+        }
+    }
+}
